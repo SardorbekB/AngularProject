@@ -1,0 +1,55 @@
+<div class="bg-light text-center">
+    <h3>Covid19 Dashboard</h3>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-border table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Davlat</th>
+            <th scope="col">Umumiy</th>
+            <th scope="col">Yangi</th>
+            <th scope="col">Umumiy vafot etganlar</th>
+            <th scope="col">Yangi vafot etganlar</th>
+            <th scope="col">Activ holatlar</th>
+            <th scope="col">Umumiy tuzalganlar</th>
+            <th scope="col">Jiddiy holatlar</th>
+            <th scope="col">Umumiy / 1M aholi</th>
+            <th scope="col">Vafot etganlar / 1M aholi</th>
+            <th scope="col">Umumiy testlar</th>
+            <th scope="col">Umumiy testlar / 1M aholi</th>
+            <th scope="col">Aholi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let countryStatistics of countryStatistics; let i = index" [ngClass]="{'bg-success': countryStatistics.active === 0}">
+            <th scope="row">{{i+1}}</th>
+            <th scope="col">
+              <a href="#">{{countryStatistics.country }}</a>
+            </th>
+            <th scope="col">{{countryStatistics.cases | number}}</th>
+            <th scope="col" [ngClass]="{'bg-warning': countryStatistics.todayCases > 0 }">
+              {{countryStatistics.todayCases > 0 ? ('+' + countryStatistics.todayCases) : ""}}
+            </th>
+            <th scope="col">{{countryStatistics.deaths | number}}</th>
+            <th scope="col" [ngClass]="{'bg-danger': countryStatistics.todayDeaths > 0}">
+              {{
+                countryStatistics.todayDeaths > 0 ? ('+' + countryStatistics.todayDeaths) : ''
+              }}
+            </th>
+            <th scope="col">{{countryStatistics.active | number}}</th>
+            <th scope="col">{{countryStatistics.recovered | number}}</th>
+            <th scope="col">{{countryStatistics.critical | number}}</th>
+            <th scope="col">{{countryStatistics.casesPerOneMillion | number}}</th>
+            <th scope="col">{{countryStatistics.casesPerOneMillion | number}}</th>
+            <th scope="col">{{countryStatistics.tests | number}}</th>
+            <th scope="col">{{countryStatistics.oneTestPerPeople | number}}</th>
+            <th scope="col" class="text-info">{{countryStatistics.population | number}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
