@@ -8,6 +8,9 @@ import { MainStatisticsComponent } from './main-statistics/main-statistics.compo
 import { CountryStatisticsComponent } from './country-statistics/country-statistics.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CountryPageComponent } from './country-page/country-page.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     MainStatisticsComponent,
     CountryStatisticsComponent,
-    FooterComponent
+    FooterComponent,
+    CountryPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

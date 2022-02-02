@@ -1,3 +1,12 @@
+<!-- Search -->
+<div class="input-group mb-3">
+  <input [(ngModel)]="keyword"
+  (ngModelChange)="onCountryFilter()"
+    type="text" 
+    class="form-control" 
+    placeholder="Davlatni nomini kiriting">
+</div>
+
 <div class="bg-light text-center">
     <h3>Covid19 Dashboard</h3>
   </div>
@@ -24,29 +33,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let countryStatistics of countryStatistics; let i = index" [ngClass]="{'bg-success': countryStatistics.active === 0}">
-            <th scope="row">{{i+1}}</th>
-            <th scope="col">
-              <a href="#">{{countryStatistics.country }}</a>
-            </th>
-            <th scope="col">{{countryStatistics.cases | number}}</th>
-            <th scope="col" [ngClass]="{'bg-warning': countryStatistics.todayCases > 0 }">
-              {{countryStatistics.todayCases > 0 ? ('+' + countryStatistics.todayCases) : ""}}
-            </th>
-            <th scope="col">{{countryStatistics.deaths | number}}</th>
-            <th scope="col" [ngClass]="{'bg-danger': countryStatistics.todayDeaths > 0}">
+          <tr *ngFor="let countryStatistic of countryStatistics; let i = index" [ngClass]="{'bg-success text-light': countryStatistic.active === 0}">
+            <td scope="row">{{i+1}}</td>
+            <td scope="col">
+              <a href="/country">{{countryStatistic.country }}</a>
+            </td>
+            <td scope="col">{{countryStatistic.cases | number}}</td>
+            <td scope="col" [ngClass]="{'bg-warning': countryStatistics.todayCases > 0 }">
+              {{countryStatistic.todayCases > 0 ? ('+' + countryStatistic.todayCases) : ""}}
+            </td>
+            <td scope="col">{{countryStatistic.deaths | number}}</td>
+            <td scope="col" [ngClass]="{'bg-danger text-light': countryStatistic.todayDeaths > 0}">
               {{
-                countryStatistics.todayDeaths > 0 ? ('+' + countryStatistics.todayDeaths) : ''
+                countryStatistic.todayDeaths > 0 ? ('+' + countryStatistic.todayDeaths) : ''
               }}
-            </th>
-            <th scope="col">{{countryStatistics.active | number}}</th>
-            <th scope="col">{{countryStatistics.recovered | number}}</th>
-            <th scope="col">{{countryStatistics.critical | number}}</th>
-            <th scope="col">{{countryStatistics.casesPerOneMillion | number}}</th>
-            <th scope="col">{{countryStatistics.casesPerOneMillion | number}}</th>
-            <th scope="col">{{countryStatistics.tests | number}}</th>
-            <th scope="col">{{countryStatistics.oneTestPerPeople | number}}</th>
-            <th scope="col" class="text-info">{{countryStatistics.population | number}}</th>
+            </td>
+            <td scope="col">{{countryStatistic.active | number}}</td>
+            <td scope="col">{{countryStatistic.recovered | number}}</td>
+            <td scope="col">{{countryStatistic.critical | number}}</td>
+            <td scope="col">{{countryStatistic.casesPerOneMillion | number}}</td>
+            <td scope="col">{{countryStatistic.deathsPerOneMillion | number}}</td>
+            <td scope="col">{{countryStatistic.tests | number}}</td>
+            <td scope="col">{{countryStatistic.oneTestPerPeople | number}}</td>
+            <td scope="col" class="text-info">{{countryStatistic.population | number}}</td>
           </tr>
         </tbody>
       </table>

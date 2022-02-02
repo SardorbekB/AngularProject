@@ -10,6 +10,7 @@ export class MainStatisticsComponent implements OnInit {
   totalCase = 0;
   totalDeath = 0;
   totalRecovered = 0;
+  updateTime = 0;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class MainStatisticsComponent implements OnInit {
       this.totalCase = data.cases;
       this.totalDeath = data.deaths;
       this.totalRecovered = data.recovered;
+      this.updateTime = data.updated;
     })
   }
 
