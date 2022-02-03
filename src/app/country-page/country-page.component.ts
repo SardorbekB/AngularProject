@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-country-page',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryPageComponent implements OnInit {
 
-  constructor() { }
+  countryStatistics: any;
+
+  constructor(private route: ActivatedRoute,
+              private http: HttpClient
+    ) { 
+    const countryCode = this.route.snapshot.params['code'];
+    this.http.get('https://disease.sh/v3/covid-19/countries/' + countryCode).subscribe(result => {
+      this.countryStatistics = result;
+    })
+  }
 
   ngOnInit(): void {
   }
